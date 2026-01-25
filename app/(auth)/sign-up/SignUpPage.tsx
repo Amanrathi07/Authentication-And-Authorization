@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export function SignUpPage() {
   const [name, setName] = useState("");
@@ -15,13 +16,14 @@ export function SignUpPage() {
         name,
         email,
         password,
+        callbackURL:"/"
       },
       {
         onSuccess: () => {
-          alert("user is created");
+          toast.success("sign-up successful");
         },
         onError: (ctx) => {
-          alert(ctx.error.message);
+          toast.error(ctx.error.message);
         },
       },
     );
