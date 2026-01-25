@@ -1,39 +1,32 @@
-""
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { authClient } from "@/lib/auth-client";
-import { useState } from "react";
+import { auth } from "@/lib/auth";
+import LogoutView from "@/modules/LogoutView";
+import { headers } from "next/headers";
+import Link from "next/link";
 
 
-export default function Home() {
-  const [name,setName] = useState('')
-  const [email,setEmail] = useState('')
-  const [password,setPassword] = useState('')
+export default async function Home() {
+  
+  const session = await auth.api.getSession({
+     headers: await headers() 
+   })
 
-  async  function formHandel(){
-    await authClient.signUp.email({
-      name,
-      email,
-      password,
-    },{
-      onSuccess:()=>{
-        alert("user is created")
-      },
-      onError:(ctx)=>{
-        alert(ctx.error.message)
-      }
-    })
+  if(session?.user){
+    return (
+    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      <div className="flex flex-col items-center justify-center gap-4">
+        <p>you are login as {session.user.name}</p>
+        <LogoutView />
+      </div>
+    </div>
+    )
   }
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-     <div className="flex flex-col gap-4">
-      <Input placeholder="name" onChange={(e)=>setName(e.target.value)} />
-      <Input placeholder="email" onChange={(e)=>setEmail(e.target.value)} />
-      <Input placeholder="password" onChange={(e)=>setPassword(e.target.value)}/>
-
-      <Button onClick={formHandel}>create user</Button>
-     </div>
+        <div className="flex  gap-8">
+          <Button><Link href="/sign-up">sign-up</Link></Button>
+          <Button><Link href="/sign-in">sign-in</Link></Button>
+        </div>
     </div>
   );
 }
