@@ -16,7 +16,7 @@ export function SignUpPage() {
         name,
         email,
         password,
-        callbackURL:"/"
+        callbackURL:"/dashboard"
       },
       {
         onSuccess: () => {
