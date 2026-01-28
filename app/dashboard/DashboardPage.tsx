@@ -29,9 +29,6 @@ export default function DashboardPage() {
   return <ProfileCard user={session.user} />;
 }
 
-/* ----------------------------- */
-/* Profile Card */
-/* ----------------------------- */
 
 function ProfileCard({ user }: ProfileInformationProps) {
   return (
@@ -76,9 +73,6 @@ function ProfileCard({ user }: ProfileInformationProps) {
   );
 }
 
-/* ----------------------------- */
-/* Reusable row */
-/* ----------------------------- */
 
 function InfoRow({
   label,
@@ -95,9 +89,6 @@ function InfoRow({
   );
 }
 
-/* ----------------------------- */
-/* Skeleton */
-/* ----------------------------- */
 
 function ProfileSkeleton() {
   return (
