@@ -2,7 +2,7 @@
 
 import { User } from "@/lib/auth";
 import { authClient } from "@/lib/auth-client";
-
+import { BadgeCheck, BookmarkIcon } from "lucide-react"
 import {
   Card,
   CardHeader,
@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 
 interface ProfileInformationProps {
   user: User;
@@ -32,7 +33,9 @@ export default function DashboardPage() {
 
 function ProfileCard({ user }: ProfileInformationProps) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 px-4 dark:bg-black">
+    <div className="flex flex-col gap-6 min-h-screen items-center justify-center bg-zinc-50 px-4 dark:bg-black">
+      {(!user.emailVerified)?(<Button variant={"destructive"}>pls verifi</Button>):null}
+
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="flex flex-row items-center gap-4">
           <Avatar className="h-12 w-12">
@@ -49,7 +52,8 @@ function ProfileCard({ user }: ProfileInformationProps) {
 
         <Separator />
 
-        <CardContent className="space-y-4 pt-4">
+        <CardContent className="space-y-4 pt-4 ">
+            
           <InfoRow
             label="Email status"
             value={
@@ -68,7 +72,9 @@ function ProfileCard({ user }: ProfileInformationProps) {
             }
           />
         </CardContent>
+        
       </Card>
+            
     </div>
   );
 }
@@ -84,10 +90,12 @@ function InfoRow({
   return (
     <div className="flex items-center justify-between text-sm">
       <span className="text-muted-foreground">{label}</span>
+      
       <span>{value}</span>
     </div>
   );
 }
+          
 
 
 function ProfileSkeleton() {

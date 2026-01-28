@@ -1,13 +1,12 @@
-import { auth } from "@/lib/auth"
-import { headers } from "next/headers"
+
 import { redirect } from "next/navigation"
 import DashboardPage from "./DashboardPage"
+import { getServerSession } from "@/lib/getServerSession";
 
 
 export default async function page() {
-    const session =await auth.api.getSession({
-        headers:await headers(),
-    })
+        const session = await getServerSession();
+    
     if(!session?.user){
         return redirect("/sign-in")
     }
