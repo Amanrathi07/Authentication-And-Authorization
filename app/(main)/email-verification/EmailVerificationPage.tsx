@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
-import { sendEmail } from "@/nodemailer/transporter";
 import toast from "react-hot-toast";
 
 export default function EmailVerificationPage() {
@@ -17,10 +16,6 @@ export default function EmailVerificationPage() {
     try {
       setLoading(true);
       
-    //   await sendEmail({
-    //     to:user?.email ,
-    //     text : "from the email verification page " 
-    //       });
 
     const {error} = await authClient.sendVerificationEmail({
         email: user.email,
@@ -31,7 +26,6 @@ export default function EmailVerificationPage() {
     }else{
         toast.success("verification email sent successfully");
     }
-    toast.success("verification email sent successfully");  
       
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
