@@ -16,11 +16,23 @@ export default function EmailVerificationPage() {
     if (!user?.email) return;
     try {
       setLoading(true);
-      await sendEmail({
-        to:user?.email ,
-        text : "from the email verification page " 
-          });
-      toast.success("Email sent successfully");
+      
+    //   await sendEmail({
+    //     to:user?.email ,
+    //     text : "from the email verification page " 
+    //       });
+
+    const {error} = await authClient.sendVerificationEmail({
+        email: user.email,
+        callbackURL:"/email-verification"
+    })
+    if(error?.message){
+        toast.error(error.message)
+    }else{
+        toast.success("verification email sent successfully");
+    }
+    toast.success("verification email sent successfully");  
+      
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
     } finally {

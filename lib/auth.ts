@@ -16,12 +16,15 @@ export const auth = betterAuth({
   },emailVerification :{
     sendOnSignUp:true,
     autoSignInAfterVerification:true,
-    async sendVerificationEmail({user,url}){
-      await sendEmail({
-        to : user.email ,
-        text : `click the link to verify your email : ${url}`
-      })
-    }
+    async sendVerificationEmail({ user, url }) {
+          console.log("Verification hook triggered");
+        console.log("User:", user.email);
+        console.log("URL:", url);
+        await sendEmail({
+          to: user.email,
+          text: `click the link to verify your email : ${url}`
+        })
+}
   },
   user:{
     additionalFields:{
