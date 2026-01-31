@@ -11,14 +11,18 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+interface props{
+  to: string ;
+  text : string ; 
+  url? : string ;
+}
 
-export async function sendEmail(){
+export async function sendEmail({to,text}:props){
     await transporter.sendMail({
     from: '"Maddison Foo Koch" <maddison53@ethereal.email>',
-    to: "amanrathi4321@gmail.com",
+    to: `${to}`,
     subject: "Hello ✔",
-    text: "Hello world?", 
-    html: "<b>Hello world?</b>", 
+    text: `${text}`, 
   });
 
 }
