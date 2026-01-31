@@ -16,7 +16,10 @@ export default function EmailVerificationPage() {
     if (!user?.email) return;
     try {
       setLoading(true);
-    //   await sendEmail();
+      await sendEmail({
+        to:user?.email ,
+        text : "from the email verification page " 
+          });
       toast.success("Email sent successfully");
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
