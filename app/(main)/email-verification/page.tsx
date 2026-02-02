@@ -5,7 +5,7 @@ import EmailVerificationPage from "./EmailVerificationPage";
 export default async function Page() {
   const session = await getServerSession();
   if(!session?.user) redirect("/sign-in");
-  if(session.user.emailVerified) redirect("/");
+  if(session.user.emailVerified) redirect("/dashboard");
   return (
     <EmailVerificationPage />
   )
