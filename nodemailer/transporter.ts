@@ -1,14 +1,16 @@
 "use server"
 import nodemailer from "nodemailer"
 
+
+
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   secure: true, 
-  auth: {
-    user: "amanrathi4321@gmail.com",
-    pass: "qbqp izhv qegg qlnq",
-  },
+    auth: {
+      user:process.env.EMAIL,
+      pass:process.env.EMAIL_PASS
+    },
 });
 
 interface props{
