@@ -11,8 +11,14 @@ export const auth = betterAuth({
     database: prismaAdapter(prisma, {
         provider: "postgresql", // or "mysql", "postgresql", ...etc
     }),
-     emailAndPassword: { 
+    emailAndPassword: { 
     enabled: true, 
+    sendResetPassword: async ({ user, url} ) => {
+            await sendEmail({
+                to: user.email,
+                text: `Click the link to reset your password: ${url}`
+            })
+        }
   },emailVerification :{
     sendOnSignUp:true,
     autoSignInAfterVerification:true,

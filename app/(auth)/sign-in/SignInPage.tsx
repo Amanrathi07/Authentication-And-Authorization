@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -35,7 +36,9 @@ export function SignInPage() {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-          <span className="scale-70 cursor-pointer underline relative ml-34 "  >forget password</span>
+          
+            <span className="scale-70 cursor-pointer underline relative ml-34 "  ><Link href="/forget-password">forget password</Link></span>
+          
        </div>
 
         <Button onClick={formHandel}>signin</Button>
