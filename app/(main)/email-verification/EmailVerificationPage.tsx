@@ -19,7 +19,7 @@ export default function EmailVerificationPage() {
 
     const {error} = await authClient.sendVerificationEmail({
         email: user.email,
-        callbackURL:"/email-verification"
+        callbackURL:"/dashboard"
     })
     if(error?.message){
         toast.error(error.message)
