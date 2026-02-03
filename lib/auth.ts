@@ -16,7 +16,8 @@ export const auth = betterAuth({
     sendResetPassword: async ({ user, url} ) => {
             await sendEmail({
                 to: user.email,
-                text: `Click the link to reset your password: ${url}`
+                url: url,
+                text:"click to reset the password"
             })
         }
   },emailVerification :{
@@ -25,7 +26,8 @@ export const auth = betterAuth({
     async sendVerificationEmail({ user, url }) {
         await sendEmail({
           to: user.email,
-          text: url
+          url: url ,
+          text:"click to verify your email "
         })
 }
   },
