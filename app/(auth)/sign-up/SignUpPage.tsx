@@ -5,6 +5,8 @@ import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { SocialCredentials } from "../SocialCredentials";
+
 
 export function SignUpPage() {
   const [loading,setLoading] = useState<boolean>(false)
@@ -41,7 +43,7 @@ export function SignUpPage() {
     }
   }
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex flex-col gap-6 min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <div className="flex flex-col gap-4">
         <Input placeholder="name" onChange={(e) => setName(e.target.value)} />
         <Input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
@@ -51,6 +53,9 @@ export function SignUpPage() {
         />
 
         <Button disabled={loading} onClick={formHandel}>create user</Button>
+      </div>
+      <div >
+        <SocialCredentials />
       </div>
     </div>
   );

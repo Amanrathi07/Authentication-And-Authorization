@@ -20,7 +20,8 @@ export const auth = betterAuth({
                 text:"click to reset the password"
             })
         }
-  },emailVerification :{
+  },
+  emailVerification :{
     sendOnSignUp:true,
     autoSignInAfterVerification:true,
     async sendVerificationEmail({ user, url }) {
@@ -38,7 +39,17 @@ export const auth = betterAuth({
         input:false
       }
     }
-  }
+  },
+  socialProviders: {
+        google: { 
+            clientId: process.env.GOOGLE_CLIENT_ID as string, 
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string, 
+        }, 
+         github: { 
+            clientId: process.env.GITHUB_CLIENT_ID as string, 
+            clientSecret: process.env.GITHUB_CLIENT_SECRET as string, 
+        }, 
+    },
 });
 
 export type Session = typeof auth.$Infer.Session ;
