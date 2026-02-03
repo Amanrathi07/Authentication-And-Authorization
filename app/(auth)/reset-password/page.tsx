@@ -22,11 +22,15 @@ export default function page() {
           newPassword:password,
           token ,          
         })
+        setPassword("")
+        setConfPassword("")
         if(error){
           toast.error(error.message || "somthing went worng")
         }else{
           toast.success("password reset sussesful") ;
-          useRouter().push("/sign-in")
+          setTimeout(() => {
+            useRouter().push("/sign-in")
+          }, 1000);
         }
 
         
