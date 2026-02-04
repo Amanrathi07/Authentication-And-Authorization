@@ -16,7 +16,7 @@ export function SignInPage() {
       {
         email,
         password,
-        callbackURL:"/dashboard"
+        callbackURL: "/dashboard",
       },
       {
         onSuccess: () => {
@@ -30,40 +30,34 @@ export function SignInPage() {
   }
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-  <div className="flex w-full max-w-sm flex-col gap-4">
-    
-    <Input
-      placeholder="email"
-      onChange={(e) => setEmail(e.target.value)}
-    />
+      <div className="flex w-full max-w-sm flex-col gap-4">
+        <Input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
 
-    <div className="flex flex-col gap-1">
-      <Input
-        placeholder="password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <div className="flex flex-col gap-1">
+          <Input
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-      <div className="flex justify-end">
-        <Link
-          href="/forget-password"
-          className="text-xs underline cursor-pointer"
-        >
-          forget password
-        </Link>
+          <div className="flex justify-end">
+            <Link
+              href="/forget-password"
+              className="text-xs underline cursor-pointer"
+            >
+              forget password
+            </Link>
+          </div>
+        </div>
+
+        <Button onClick={formHandel}>signin</Button>
+
+        <div className="pt-4">
+          <SocialCredentials />
+        </div>
+      </div>
+      <div>
+        alrady have an account <Link href="/sign-up">sign-up</Link>
       </div>
     </div>
-
-    <Button onClick={formHandel}>signin</Button>
-
-    <div className="pt-4">
-      <SocialCredentials />
-    </div>
-
-  </div>
-  <div>
-          alrady have an account <Link href="/sign-up">sign-up</Link>
-        </div>
-</div>
-
   );
 }
