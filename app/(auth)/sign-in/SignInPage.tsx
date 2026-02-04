@@ -60,6 +60,9 @@ export function SignInPage() {
     </div>
 
   </div>
+  <div>
+          alrady have an account <Link href="/sign-up">sign-up</Link>
+        </div>
 </div>
 
   );

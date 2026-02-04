@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { SocialCredentials } from "../SocialCredentials";
+import Link from "next/link";
 
 
 export function SignUpPage() {
@@ -56,6 +57,9 @@ export function SignUpPage() {
       </div>
       <div >
         <SocialCredentials />
+      </div>
+      <div>
+        alrady have an account <Link href="/sign-in">sign-in</Link>
       </div>
     </div>
   );
