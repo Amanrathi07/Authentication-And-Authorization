@@ -8,19 +8,23 @@ import toast from "react-hot-toast";
 
 export function ForgetPasswordPage() {
     const [email, setEmail] = useState("");
+    const [submit, setSubmit]=useState(false)
     const router = useRouter()
     async function onSubmit(){
-        const {} = await authClient.requestPasswordReset({
+        setSubmit(true)
+        await authClient.requestPasswordReset({
             email,
             redirectTo:"/reset-password"
         },{
           onSuccess:()=>{
             toast.success("email is send to registered email");
             setTimeout(() => {
+              setSubmit(false)
               router.push('/sign-in')
             }, 2000);
           },
           onError:(error)=>{
+            setSubmit(false)
             toast.error(error.error.message || "somthing gone wrong pls try again ")
           }
         })
@@ -32,7 +36,7 @@ export function ForgetPasswordPage() {
           placeholder=" Enter your email for password reset"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Button onClick={onSubmit}>Send rest link</Button>
+        <Button disabled={submit} onClick={onSubmit}>Send rest link</Button>
       </div>
     </div>
   );

@@ -73,7 +73,7 @@ function ProfileCard({ user }: ProfileInformationProps) {
       {!user.emailVerified ? (
         <Button variant="outline" asChild>
           <Link href="/email-verification">
-            Verify your email address
+            Verify your email 
           </Link>
         </Button>
       ) : null}
