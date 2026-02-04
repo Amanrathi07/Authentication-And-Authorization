@@ -33,8 +33,6 @@ export default function DashboardPage() {
 function ProfileCard({ user }: ProfileInformationProps) {
   return (
     <div className="flex flex-col gap-6 min-h-screen items-center justify-center bg-zinc-50 px-4 dark:bg-black">
-      
-
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="flex flex-row items-center gap-4">
           <Avatar className="h-12 w-12">
@@ -51,7 +49,7 @@ function ProfileCard({ user }: ProfileInformationProps) {
 
         <Separator />
 
-        <CardContent className="space-y-4 pt-4 ">
+        <CardContent className="space-y-4 pt-4">
           <InfoRow
             label="Email status"
             value={
@@ -71,13 +69,14 @@ function ProfileCard({ user }: ProfileInformationProps) {
           />
         </CardContent>
       </Card>
-      {
-        !user.emailVerified ? (
-          <Button variant={"outline"}>
-           <Link href="/email-verification">click to verify email</Link>
-          </Button>
-        ) : null
-      }
+
+      {!user.emailVerified ? (
+        <Button variant="outline" asChild>
+          <Link href="/email-verification">
+            Verify your email address
+          </Link>
+        </Button>
+      ) : null}
     </div>
   );
 }
@@ -86,7 +85,6 @@ function InfoRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="flex items-center justify-between text-sm">
       <span className="text-muted-foreground">{label}</span>
-
       <span>{value}</span>
     </div>
   );
