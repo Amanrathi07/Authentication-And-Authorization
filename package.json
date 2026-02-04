@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "prisma:deploy":"bun prisma migrate deploy",
+    "start": "bun run prisma:deploy &&  next start",
     "lint": "eslint"
   },
   "dependencies": {
