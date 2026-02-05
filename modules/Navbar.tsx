@@ -6,6 +6,7 @@ export function Navbar() {
   const NavItem = [
     { name: "admin", url: "/admin" },
     { name: "dashboard", url: "/dashboard" },
+    {name:"profile",url:"/profile"}
   ]
 
   return (
