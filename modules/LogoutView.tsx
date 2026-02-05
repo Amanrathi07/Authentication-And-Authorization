@@ -16,6 +16,7 @@ export default function LogoutView() {
                 onSuccess:()=>{
                     toast.success("logout sussesful")
                     router.push("/sign-in")
+                    router.refresh()
                 },
                 onError:({error})=>{
                     toast.error(error.message || "somthing went worng")
