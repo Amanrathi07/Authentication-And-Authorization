@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "prisma:deploy": "bun prisma migrate deploy",
-    "start": "bun run prisma:deploy &&  next start",
+    "build": "bun run prisma:deploy && next build",
+    "prisma:deploy": "bun prisma migrate deploy && bun prisma generate",
+    "start": " next start",
     "lint": "eslint"
   },
   "dependencies": {
