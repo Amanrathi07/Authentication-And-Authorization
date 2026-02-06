@@ -20,7 +20,7 @@ A production-ready authentication and authorization system built with modern too
 - 🧠 Role-Based Access Control (User / Admin)  
 - 📧 Email Verification via Nodemailer  
 - 🔁 Password Reset via Email  
-- 🌐 OAuth Support (Google / GitHub if configured)  
+- 🌐 OAuth Support (Google / GitHub)  
 - 🗄 Prisma Database Integration  
 
 ---
