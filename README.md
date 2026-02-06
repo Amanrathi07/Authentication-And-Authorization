@@ -26,3 +26,4 @@ A production-ready authentication and authorization system built with modern too
 ---
 
 ## 📂 Project Structure
+├── app/                  # Next.js App Router ├── components/           # UI components ├── lib/ │   ├── auth.ts           # Better Auth configuration │   ├── auth-client.ts    # Client-side auth hooks ├── prisma/ │   └── schema.prisma     # Database schema ├── nodemailer/ │   └── transporter.ts    # Email configuration ├── middleware.ts         # Route protection ├── .env.example └── package.json
