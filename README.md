@@ -41,7 +41,7 @@ cd Authentication-And-Authorization
 bun install
 
 # Setup environment variables
-cp .env.example .env.local
+cp .env.example .env
 # Edit .env.local with your credentials
 
 # Setup database
