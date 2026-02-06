@@ -9,7 +9,7 @@ A modern, production-ready authentication system built with Next.js, Better Auth
 - ✉️ Email Verification
 - 🔑 Password Reset Flow
 - 👥 Role-Based Access Control (User/Admin)
-- 🛡️ Protected Routes with Middleware
+- 🛡️ Protected Routes 
 - 📱 Responsive Modern UI
 - 🔒 Secure Session Management
 
