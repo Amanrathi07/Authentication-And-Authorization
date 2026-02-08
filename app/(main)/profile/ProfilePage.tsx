@@ -7,6 +7,9 @@ import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 interface Props {
   user: {
@@ -21,11 +24,24 @@ interface Props {
 }
 
 export default function ProfilePage({ user }: Props) {
+    const router = useRouter()
     const [edit,setEdit]=useState(false)
     const [name,setName] = useState(user.name);
-    async function handelClick(){
-
-    }
+    async function handleEdit(){
+      if(!edit) return
+      await authClient.updateUser({
+        name
+      },{
+        onSuccess:()=>{
+          toast.success("Name changed successfully");
+          router.refresh()
+        },
+        onError:(error)=>{
+          toast.error(error.error.message)
+        }
+      })
+      setEdit(false)
+    } 
 
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
@@ -42,7 +58,7 @@ export default function ProfilePage({ user }: Props) {
             </AvatarFallback>
           </Avatar>
               
-            {(edit)?<Input className="text-xl" value={name} type="text" onChange={(e)=>setName(e.target.value)} / >:
+            {(edit)?<Input className="text-xl" placeholder="Name" value={name} type="text" onChange={(e)=>setName(e.target.value)} / >:
           <CardTitle  className="text-xl">{user.name}</CardTitle>}
           
           <Badge variant="secondary" className="capitalize">
@@ -87,8 +103,8 @@ export default function ProfilePage({ user }: Props) {
 
           <div className="flex justify-end">
             {(edit)?<div className="flex gap-8">
-            <Button onClick={()=>setEdit(v=>!v)} variant={"destructive"}>cancel</Button>
-            <Button className="bg-green-400 hover:bg-green-400 hover:scale-105" >save</Button>
+            <Button onClick={()=>{setName(user.name); setEdit(v=>!v)}} variant={"destructive"}>Cancel</Button>
+            <Button className="bg-green-400 hover:bg-green-400 hover:scale-105" onClick={handleEdit} >Save</Button>
             </div>:
             <Button variant="outline" onClick={()=>setEdit(v=>!v)}>Edit Profile</Button>}
           </div>
