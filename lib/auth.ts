@@ -2,7 +2,7 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { PrismaClient } from "@/lib/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
-
+import { lastLoginMethod } from "better-auth/plugins"
 // import { sendEmail } from "@/nodemailer/resendEmal"; //for resend
 
 import { sendEmail } from "@/nodemailer/transporter"; //for nodemon
@@ -55,6 +55,9 @@ export const auth = betterAuth({
             clientSecret: process.env.GITHUB_CLIENT_SECRET as string, 
         }, 
     },
+     plugins: [
+        lastLoginMethod() 
+    ]
 });
 
 export type Session = typeof auth.$Infer.Session ;
