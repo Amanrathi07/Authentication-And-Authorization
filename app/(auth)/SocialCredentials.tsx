@@ -3,12 +3,13 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaGithub } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 
 export function SocialCredentials() {
-  const lastMethod = authClient.getLastUsedLoginMethod();
+  const [ lastMethod, setLastMethod ] = useState<null|string>();
   async function socialHandel(provider: "google" | "github") {
     await authClient.signIn.social(
       {
@@ -28,6 +29,10 @@ export function SocialCredentials() {
     );
   }
 
+
+  useEffect(()=>{
+   setLastMethod(authClient.getLastUsedLoginMethod())
+  },[])
 
   return (
     <div className="flex flex-col gap-3">

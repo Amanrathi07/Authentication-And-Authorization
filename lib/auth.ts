@@ -56,7 +56,7 @@ export const auth = betterAuth({
         }, 
     },
      plugins: [
-        lastLoginMethod() 
+        lastLoginMethod()
     ]
 });
 
