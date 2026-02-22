@@ -7,6 +7,7 @@ import { lastLoginMethod } from "better-auth/plugins"
 
 import { sendEmail } from "@/nodemailer/transporter"; //for nodemon
 
+import { captcha } from "better-auth/plugins";
 
 const pool = new PrismaPg({connectionString:process.env.DATABASE_URL!})
 const prisma = new PrismaClient({adapter:pool});
@@ -56,7 +57,11 @@ export const auth = betterAuth({
         }, 
     },
      plugins: [
-        lastLoginMethod()
+        lastLoginMethod(),
+        //  captcha({ 
+        //     provider: "cloudflare-turnstile", // or google-recaptcha, hcaptcha, captchafox
+        //     secretKey: process.env.TURNSTILE_SECRET_KEY!, 
+        // }), 
     ]
 });
 
